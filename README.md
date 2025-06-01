@@ -1,80 +1,87 @@
+# nextjs-client-components
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Description
+
+`nextjs-client-components` is a modern web application built with [Next.js](https://nextjs.org). It demonstrates the use of **Client Components**, such as a reusable `Button` component, to handle interactivity in a modern web application. This project also highlights the difference between server and client components.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v14 or later)
+- npm, yarn, or pnpm (depending on your preference)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Achintha-999/nextjs-client-components.git
+
+2. Navigate to the project directory:    
+   cd nextjs-client-components
+
+3. Install dependencies:
+   npm install
+# or
+yarn install
+# or
+pnpm install
+
+Running the Development Server
+Start the development server:
+
 npm run dev
 # or
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
-```
 
-Once the server is running, open http://localhost:3000 in your browser to view the application.
+Open http://localhost:3000 in your browser to view the app.
 
-You can start editing the application by modifying the file located at page.jsx. The page will automatically update as you make changes.
+Client Components
+This project includes client components, which are interactive and rendered on the client side. For example, the Button component is a client component imported and used in the Home component.
 
-## Adding Images
-
- ## Adding Local Images
-Place your image files in the public/ directory of your project. For example, you can add an image at public/4.jpg.
-
-Import the image in your component using the next/image component:
-import Image from "next/image";
-import img1 from "../../public/4.jpg";
+Example of Client Component Usage
+In page.jsx:
+import Button from "./(components)/Button";
 
 export default function Home() {
   return (
-    <Image
-      src={img1}
-      alt="Local Image"
-      width={1000}
-      height={1000}
-    />
+    <>
+      <h3>Server Components vs Client Components</h3>
+      <Button />
+    </>
   );
 }
 
-## Adding Remote Images
+he Button component is located in the src/app/(components)/Button.jsx directory and is designed to handle client-side interactions.
 
-To use remote images, you need to configure the next.config.mjs file to allow specific domains. Add the following configuration:
+Example of the Button Component
+The Button component is explicitly marked as a client component using the "use client" directive:
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  images: {
-    domains: ["images.unsplash.com"], // Add your allowed domains here
-  },
-};
+// filepath: /src/app/(components)/Button.jsx
+"use client";
 
-export default nextConfig;
+export default function Button() {
+  const handleClick = () => {
+    alert("Button clicked!");
+  };
 
-Then, use the next/image component to render the remote image:
-
-import Image from "next/image";
-
-export default function Home() {
-  return (
-    <Image
-      src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?q=80&w=2074&auto=format&fit=crop"
-      alt="Remote Image"
-      width={1000}
-      height={1000}
-    />
-  );
+  return <button onClick={handleClick}>Click Me</button>;
 }
 
-Notes on Image Optimization
-
-Local Images: Automatically optimized by Next.js when placed in the public/ directory.
-Remote Images: Ensure the domain is added to the domains array in next.config.mjs for optimization.
-
-## Project Structure
-
+Key Features of Client Components:
+Interactivity: Client Components allow you to add event listeners and handle user interactions.
+Rendering: Unlike Server Components, Client Components are rendered in the browser.
+Usage: To use a Client Component, ensure it is marked with the "use client" directive at the top of the file.
+Project Structure
 The project structure is as follows:
-myfirstnextapp/
+
+nextjs-client-components/
 ├── .gitignore
 ├── .next/
 ├── eslint.config.mjs
@@ -82,8 +89,17 @@ myfirstnextapp/
 ├── next.config.mjs
 ├── package.json
 ├── public/
-│   └── 4.jpg
 ├── README.md
 ├── src/
 │   └── app/
+│       ├── (components)/
+│       │   └── Button.jsx
 │       └── page.jsx
+
+Learn More
+To learn more about Next.js and Client Components, check out the following resources:
+
+Next.js Documentation - Learn about Next.js features and API.
+Client and Server Components - Learn about the difference between Client and Server Components.
+License
+This project is open-source and available under the MIT License. ```
